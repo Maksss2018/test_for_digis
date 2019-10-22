@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id":36544654654654654654654,
+      "name": "Malyi M.G.",
+      "auth": "admin",
+      "profession": "JavaScript developer",
+      "password": "54a6s546a5s65a4sa5s654s"
+    },
+    {
+      "id":36544654654654657777777774,
+      "name": "Vlad",
+      "auth": "visiter",
+      "profession": "JavaScript developer",
+      "password": "54a6s546a5s65a4sa5s654s"
+    }
+  ],
+  "usersMarks": {
+    "36544654654654654654654":[{
+      "lat": "00000",
+      "len": 11111,
+      "name": "some place"
+    }]
+  }
+}
