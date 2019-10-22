@@ -3,16 +3,14 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getData } from './../headerActions';
 import {
-    Collapse, DropdownItem,
-    DropdownMenu,
-    DropdownToggle,
-    Nav, Navbar,
-    NavbarToggler,
+    Nav,
     NavItem,
     NavLink,
-    UncontrolledDropdown
 } from "reactstrap";
+import { IoMdLogIn } from 'react-icons/io';
 import CommonHeaderWrapper from '../../common/CommonHeaderWrapper';
+import SocialsList from '../../common/SocialsList';
+
 
 const Header = ({  main, dispatch,...props }) => {
     useEffect(()=>{
@@ -27,26 +25,10 @@ const Header = ({  main, dispatch,...props }) => {
 }
 const Template = ({}) => (<>
     <Nav className="ml-auto" navbar>
+        <SocialsList WrapperComponent={NavItem}/>
         <NavItem>
-            <NavLink href="/login">Login</NavLink>
+            <NavLink href="/login">Login{` `}<IoMdLogIn size={30}/></NavLink>
         </NavItem>
-        <UncontrolledDropdown nav inNavbar>
-            <DropdownToggle nav caret>
-                Options
-            </DropdownToggle>
-            <DropdownMenu right>
-                <DropdownItem>
-                    Option 1
-                </DropdownItem>
-                <DropdownItem>
-                    Option 2
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                    Reset
-                </DropdownItem>
-            </DropdownMenu>
-        </UncontrolledDropdown>
     </Nav>
 </>);
 

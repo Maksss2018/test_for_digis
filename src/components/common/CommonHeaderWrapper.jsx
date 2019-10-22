@@ -11,10 +11,10 @@ const  CommonHeaderWrapper = ({ children }) => {
 
 const  CommonHeaderTemplate = ({ handleToggle, isOpen, children }) => (
     <Col xs={12}>
-        <Navbar color="dark" light expand="md">
+        <Navbar color="dark" light expand="md" >
             <NavbarBrand href="/">Malyi VS GoogleMapAPI </NavbarBrand>
             <NavbarToggler onClick={handleToggle} />
-            <Collapse isOpen={isOpen} navbar>
+            <Collapse className="py-auto" isOpen={isOpen} navbar>
                 {children}
             </Collapse>
         </Navbar>

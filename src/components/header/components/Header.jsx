@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getData } from './../headerActions';
+import { IoMdLogOut } from 'react-icons/io';
 import {
     Collapse, DropdownItem,
     DropdownMenu,
@@ -39,25 +40,8 @@ const Template = ({handleToggle,isOpen}) => (<>
                 </NavItem>
             ))}
             <NavItem>
-                <NavLink href="/logout">logout</NavLink>
+                <NavLink href="/logout">logout{` `}<IoMdLogOut size={30}/></NavLink>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                    Options
-                </DropdownToggle>
-                <DropdownMenu right>
-                    <DropdownItem>
-                        Option 1
-                    </DropdownItem>
-                    <DropdownItem>
-                        Option 2
-                    </DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>
-                        Reset
-                    </DropdownItem>
-                </DropdownMenu>
-            </UncontrolledDropdown>
         </Nav>
     </>
 Authorized user
