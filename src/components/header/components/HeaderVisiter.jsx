@@ -10,9 +10,11 @@ import {
 import { IoMdLogIn } from 'react-icons/io';
 import CommonHeaderWrapper from '../../common/CommonHeaderWrapper';
 import SocialsList from '../../common/SocialsList';
+import { useHistory } from "react-router-dom";
 
-
-const Header = ({  main, dispatch,...props }) => {
+const Header = ({  main, dispatch, logingin,...props }) => {
+    const history =  useHistory();
+    const relocate = e =>history.push("/login");
     useEffect(()=>{
         if( main === null  ){
             console.log("reqData");
@@ -20,15 +22,15 @@ const Header = ({  main, dispatch,...props }) => {
         }
     },[]);
     return (<CommonHeaderWrapper>
-        <Template />
+        <Template logingin={logingin} handelRelocate={relocate} />
     </CommonHeaderWrapper>);
 }
-const Template = ({}) => (<>
+const Template = ({ logingin, handelRelocate }) => (<>
     <Nav className="ml-auto" navbar>
         <SocialsList WrapperComponent={NavItem}/>
-        <NavItem>
-            <NavLink href="/login">Login{` `}<IoMdLogIn size={30}/></NavLink>
-        </NavItem>
+        { !logingin &&  (<NavItem onClick={handelRelocate} >
+            <span  className=" nav-link " >Login{` `}<IoMdLogIn size={30}/></span>
+        </NavItem>)}
     </Nav>
 </>);
 
