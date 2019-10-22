@@ -1,13 +1,29 @@
 import React from 'react';
-import Header from "./header";
+import Header from "./components/Header";
+import HeaderAdmin from "./components/HeaderAdmin";
+import HeaderVisiter from "./components/HeaderVisiter";
+import "./scss/index.scss";
 import RouterLayout from "../../routerComponents/RouterLayout";
 
 
 const arr = [
     {
-        path:"/",
+        path:"/login/:name",
         component: ()=> <Header/>,
         exact: true
+    },
+    {
+        path:"/admin",
+        component: ()=>  <HeaderAdmin/>,
+        exact: true
+    },
+    {
+        path:"/",
+        component: ()=> <HeaderVisiter/>,
+        exact: true
+    },
+    {
+        render:()=> "",
     },
 ];
 

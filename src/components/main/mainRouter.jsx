@@ -1,5 +1,6 @@
 import React from 'react';
 import Main from "./main";
+import PageNotFound from "./PageNotFound";
 import RouterLayout from "../../routerComponents/RouterLayout";
 
 
@@ -10,7 +11,7 @@ const arr = [
         exact: true
     },
     {
-        render: ()=> ( <h1>404 ERROR  page not found</h1> ),
+        render: ()=> ( <PageNotFound/> ),
     }
 ];
 
