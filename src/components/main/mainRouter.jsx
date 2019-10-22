@@ -7,7 +7,12 @@ import RouterLayout from "../../routerComponents/RouterLayout";
 const arr = [
     {
         path:"/",
-        component: ()=> <Main/>,
+        component: ()=> <h5 className="h1"> Hello visitor </h5>,
+        exact: true
+    },
+    {
+        path:"/login",
+        component: ()=> <h5 className="h1"> Login Form </h5>,
         exact: true
     },
     {

@@ -44,7 +44,6 @@ const Template = ({handleToggle,isOpen}) => (<>
             </NavItem>
         </Nav>
     </>
-Authorized user
 </>);
 
 Header.propTypes = {
