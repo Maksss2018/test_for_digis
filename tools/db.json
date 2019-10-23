@@ -1,16 +1,20 @@
 {
   "users": [
     {
-      "id":36544654654654654654654,
-      "name": "Malyi M.G.",
+      "id":"777MalyiMG",
       "auth": "admin",
       "profession": "JavaScript developer",
       "password": "54a6s546a5s65a4sa5s654s"
     },
     {
-      "id":36544654654654657777777774,
-      "name": "Vlad",
+      "id":"561Vlad",
       "auth": "visiter",
+      "profession": "JavaScript developer",
+      "password": "54a6s546a5s65a4sa5s654s"
+    },
+    {
+      "id":"566Vlad",
+      "auth": "user",
       "profession": "JavaScript developer",
       "password": "54a6s546a5s65a4sa5s654s"
     }

@@ -1,26 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { getData } from './formActions';
+import { userLogin } from './formActions';
 import './scss/index.scss';
 
-
-
-const LoginForm = (props) => {
+const LoginForm = ({ loginAs, userInfo }) => {
+     const { push } = useHistory();
     const [ inputs, setInputs] = useState({})
+
     const changeInputsValue = (e) => {
         const {name, value} = e.target;
         inputs[name]= value;
         setInputs(inputs);
-        console.dir({[name]: value, inputs});
     }
-    return ( <MainJsx handelChange={changeInputsValue} inputs={inputs} />);
+    const sendData = (e) => {
+        e.preventDefault();
+        if(!inputs.error){
+            loginAs(inputs);
+        }
+         /*TODO: add validation for inputs fields if there will be some time*/
+    }
+    useEffect(()=>{
+        if(userInfo!==null){
+            console.dir({"s":userInfo})
+            push(`/map${userInfo.auth!=="admin"?"":"/admin"}`);
+        }
+    },[userInfo])
+    return ( <MainJsx handleSubmit={sendData} handelChange={changeInputsValue} inputs={inputs} />);
 }
-const MainJsx = ({handelChange,submite, inputs}) => {
+const MainJsx = ({handelChange, handleSubmit}) => {
     return(
         <Col xs={12} className=" d-flex justify-content-center align-items-center vh-90 " >
-            <Form >
+            <Form onSubmit={handleSubmit}>
                 <FormGroup row>
                     <Col sm={12}>
                         <Input
@@ -37,7 +50,7 @@ const MainJsx = ({handelChange,submite, inputs}) => {
                 </FormGroup>
                 <FormGroup check row>
                     <Col sm={{ size: 5, offset: 4 }}>
-                        <Button> {`${JSON.stringify(inputs)}`} Submit</Button>
+                        <Button> Submit</Button>
                     </Col>
                 </FormGroup>
             </Form>
@@ -48,9 +61,8 @@ Form.propTypes = {
     props: PropTypes.any,
 };
 
-const stateFromProps = ({ main }) => ({ main });
-const mapDispatchToProps = dispatch =>{
-    return {
-    reqData: () => dispatch(getData())
-}};
-export default connect(stateFromProps )(LoginForm);
+const stateFromProps = ({ main,userInfo}) => ({ main, userInfo });
+const mapDispatchToProps = dispatch =>({
+    loginAs: (inputs) => dispatch(userLogin(inputs))
+});
+export default connect(stateFromProps,mapDispatchToProps )(LoginForm);

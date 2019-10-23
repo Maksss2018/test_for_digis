@@ -18,17 +18,19 @@ server.use((req, res, next) => {
   }
   next()
 })
-
-server.post("/********/", function(req, res, next) {
-  const error = validateCourse(req.body)
+/*
+server.get("/users", function(req, res, next) {
+  const error = validate(req.body)
+  console.log(` !!!!req = ${JSON.stringify(req)}`);
   if (error) {
     res.status(400).send(error)
   } else {
-    req.body.slug = createSlug(req.body.title)
+    req.body.slug = req.body.token
     next()
   }
-})
 
+})
+*/
 server.use(router)
 
 const port = 3001
@@ -43,9 +45,7 @@ function createSlug(value) {
     .toLowerCase()
 }
 
-function validateCourse(course) {
-  if (!course.title) return "Title is required."
-  if (!course.authorId) return "Author is required."
-  if (!course.category) return "Category is required."
+function validate({token}) {
+  if (!token) return "token unset"
   return ""
 }

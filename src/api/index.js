@@ -1,14 +1,23 @@
 const  { REACT_APP_API_URL:api } = process.env;
 
+
 const getMain = (fn) => fetch(`${api}/main`)
     .then(res =>
         res.json()
             .then(data => fn(data))
     )
-    .catch(err => err)
-
+    .catch(err => err.json().then((res)=>fn(res)))
+const getUserData = (fn,{password, user}) => fetch(`${api}/users?id_lte=${password}${user}`,{
+       method: "GET"
+     })
+    .then(res =>
+        res.json()
+            .then(data => fn(data))
+    )
+    .catch(err =>  console.dir(err) )
 export {
-    getMain
+    getMain,
+    getUserData,
     /*createItem(data) {
         return request.post(`${api}/addItem`, data);
     },
