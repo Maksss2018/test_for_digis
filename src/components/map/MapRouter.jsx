@@ -1,12 +1,12 @@
 import React from 'react';
-import Main from "./main";
+import Map from "./Map";
 import RouterLayout from "../../routerComponents/RouterLayout";
 
 
 const arr = [
     {
-        path:"/",
-        component: ()=> <Main/>,
+        path:"/map",
+        component: ()=> <Map/>,
         exact: true
     },
     {

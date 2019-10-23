@@ -8,7 +8,7 @@ import RouterLayout from "../../routerComponents/RouterLayout";
 
 const arr = [
     {
-        path:"/login/:name",
+        path:"/login/*",
         component: ()=> <Header/>,
         exact: true
     },
@@ -18,7 +18,7 @@ const arr = [
         exact: true
     },
     {
-        path:"/admin",
+        path:"/*/admin",
         component: ()=>  <HeaderAdmin/>,
         exact: true
     },

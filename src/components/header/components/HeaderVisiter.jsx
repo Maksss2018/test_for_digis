@@ -23,6 +23,12 @@ const Header = ({  main, dispatch, logingin,...props }) => {
 const Template = () => (
     <Nav className="ml-auto" navbar>
         <SocialsList WrapperComponent={NavItem}/>
+        <NavItem className="d-flex align-items-center text-light " >
+            to  became a member click
+        </NavItem>
+        <NavItem className=" d-flex align-items-center" >
+           <NavLink className=" text-success " href="https://geometry-dash.fandom.com/ru/wiki/Insane_Club">here</NavLink>
+        </NavItem>
         <LogButton logingin={false} />
     </Nav>);
 

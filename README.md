@@ -1,4 +1,4 @@
-* [ ] Create a git repository on github.com
+* [x] Create a git repository on github.com
 
 * [x] Implement React + Redux + React router Architecture ( es6 required!!! )
 
