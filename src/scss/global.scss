@@ -1,0 +1,15 @@
+@import "./mixins.scss";
+body{
+  background-color: aqua;
+  height: 100%;
+  overflow-x: hidden;
+  #root{
+    height: 100%;
+    .container-fluid{
+      height: 100vh;
+    }
+  }
+}
+.vh-{
+  @include single-side-rule-set(9, 10, height, vh);
+}

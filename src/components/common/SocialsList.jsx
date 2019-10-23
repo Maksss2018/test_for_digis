@@ -1,7 +1,6 @@
 import React from "react";
 import {SocialIcon} from "react-social-icons";
 import { socials } from './Constants';
-import '../../scss/socials-buttons.scss';
 const SocialsList = ({WrapperComponent}) =>{
     return(
         <>

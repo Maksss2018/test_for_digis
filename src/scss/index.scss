@@ -1,11 +1,2 @@
-body{
-  background-color: aqua;
-  height: 100%;
-  overflow-x: hidden;
-  #root{
-    height: 100%;
-    .container-fluid{
-      height: 100vh;
-    }
-  }
-}
+@import "./global.scss";
+@import "./socials-buttons.scss";

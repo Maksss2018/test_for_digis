@@ -11,28 +11,20 @@ import { IoMdLogIn } from 'react-icons/io';
 import CommonHeaderWrapper from '../../common/CommonHeaderWrapper';
 import SocialsList from '../../common/SocialsList';
 import { useHistory } from "react-router-dom";
+import LogButton from "./LogButton";
 
 const Header = ({  main, dispatch, logingin,...props }) => {
     const history =  useHistory();
     const relocate = e =>history.push("/login");
-    useEffect(()=>{
-        if( main === null  ){
-            console.log("reqData");
-            dispatch(getData());
-        }
-    },[]);
     return (<CommonHeaderWrapper>
         <Template logingin={logingin} handelRelocate={relocate} />
     </CommonHeaderWrapper>);
 }
-const Template = ({ logingin, handelRelocate }) => (<>
+const Template = () => (
     <Nav className="ml-auto" navbar>
         <SocialsList WrapperComponent={NavItem}/>
-        { !logingin &&  (<NavItem onClick={handelRelocate} >
-            <span  className=" nav-link " >Login{` `}<IoMdLogIn size={30}/></span>
-        </NavItem>)}
-    </Nav>
-</>);
+        <LogButton logingin={false} />
+    </Nav>);
 
 Header.propTypes = {
     props: PropTypes.any,

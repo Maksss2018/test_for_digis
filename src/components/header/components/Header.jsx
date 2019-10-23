@@ -2,18 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getData } from './../headerActions';
-import { IoMdLogOut } from 'react-icons/io';
 import {
-    Collapse, DropdownItem,
-    DropdownMenu,
-    DropdownToggle,
     Nav,
-    NavbarToggler,
     NavItem,
     NavLink,
-    UncontrolledDropdown
 } from "reactstrap";
 import CommonHeaderWrapper from "../../common/CommonHeaderWrapper";
+import LogButton from "./LogButton";
 
 const linksMap = [
     {path:"/about",name:"About"},
@@ -21,12 +16,6 @@ const linksMap = [
 ]
 
 const Header = ({  main, dispatch,...props }) => {
-    useEffect(()=>{
-        if( main === null  ){
-            console.log("reqData");
-            dispatch(getData());
-        }
-    },[]);
     return (<CommonHeaderWrapper>
         <Template />
     </CommonHeaderWrapper>);
@@ -39,9 +28,7 @@ const Template = ({handleToggle,isOpen}) => (<>
                     <NavLink href={`${path}`}>{name}</NavLink>
                 </NavItem>
             ))}
-            <NavItem>
-                <NavLink href="/logout">logout{` `}<IoMdLogOut size={30}/></NavLink>
-            </NavItem>
+            <LogButton logingin={true} />
         </Nav>
     </>
 </>);

@@ -12,9 +12,7 @@ const Main = ({  main, dispatch,...props }) => {
     },[]);
     return ( <MainJsx />);
 }
-const MainJsx = () => (<main>
-
-</main>);
+const MainJsx = () => (<h5 className="h1"> Hello visitor </h5>);
 
 Main.propTypes = {
     props: PropTypes.any,

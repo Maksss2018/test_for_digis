@@ -5,12 +5,6 @@ import { getData } from './../headerActions';
 import CommonHeaderWrapper from "../../common/CommonHeaderWrapper";
 
 const Header = ({  main, dispatch,...props }) => {
-    useEffect(()=>{
-        if( main === null  ){
-            console.log("reqData");
-            dispatch(getData());
-        }
-    },[]);
     return (<CommonHeaderWrapper>
         <Template />
     </CommonHeaderWrapper>);

@@ -1,5 +1,6 @@
 import React from 'react';
 import Main from "./main";
+import LoginForm from "./loginForm/LoginForm";
 import PageNotFound from "./PageNotFound";
 import RouterLayout from "../../routerComponents/RouterLayout";
 
@@ -7,12 +8,12 @@ import RouterLayout from "../../routerComponents/RouterLayout";
 const arr = [
     {
         path:"/",
-        component: ()=> <h5 className="h1"> Hello visitor </h5>,
+        component: ()=> <Main />,
         exact: true
     },
     {
         path:"/login",
-        component: ()=> <h5 className="h1"> Login Form </h5>,
+        component: ()=> <LoginForm />,
         exact: true
     },
     {

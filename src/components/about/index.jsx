@@ -3,13 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getData } from './aboutActions';
 
-const Index = ({  main, dispatch,...props }) => {
-    useEffect(()=>{
-        if( main === null  ){
-            console.log("reqData");
-            dispatch(getData());
-        }
-    },[]);
+const Index = (props) => {
     return ( <MainJsx />);
 }
 const MainJsx = () => (<main>
