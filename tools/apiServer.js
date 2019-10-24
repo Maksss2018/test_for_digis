@@ -18,19 +18,17 @@ server.use((req, res, next) => {
   }
   next()
 })
-/*
-server.get("/users", function(req, res, next) {
+server.get("/usersMarks", function(req, res, next) {
   const error = validate(req.body)
   console.log(` !!!!req = ${JSON.stringify(req)}`);
   if (error) {
     res.status(400).send(error)
   } else {
-    req.body.slug = req.body.token
+    req.body.id = req.body.token
     next()
   }
 
 })
-*/
 server.use(router)
 
 const port = 3001

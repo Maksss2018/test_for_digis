@@ -15,7 +15,7 @@ const LogButton = ({ logingin }) => {
     },[logingin]);
     const relocate = () =>{
         setSwitched(!switched);
-        history.push(pathname.includes("/login")?"/main":"/main/login")
+        history.push(pathname.includes("/login")?"/map":"/login")
     };
     return (
             <NavItem onClick={relocate} >

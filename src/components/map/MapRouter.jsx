@@ -6,10 +6,23 @@ import {Col} from "reactstrap";
 
 const arr = [
     {
-        path:"/map",
+        path:"/map*",
+        component: ()=><>
+            <Col
+                id="container-map "
+                xs={12}>
+                <Map/>
+            </Col>
+        </>,
+        exact: true
+    },
+    {
+        path:"/map/admin",
         component: ()=> <Col
-            id="container-map "
             xs={12}>
+            <h1>
+                Dash Board
+            </h1>
             <Map/>
         </Col> ,
         exact: true

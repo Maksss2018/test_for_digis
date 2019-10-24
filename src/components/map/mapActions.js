@@ -1,11 +1,12 @@
 import { getMain } from '../../api/index';
-import { GET_MAIN_INFO,
-    LOADING_MAIN_INFO,
-    ERROR_MAIN_INFO,
-    SET_MAIN_INFO,
+import { GET_MARKS,
+    SAVE_MARKS,
+    CLEAR_MARKS,
+    ERROR_MARKS,
 } from './constants';
-export const getData = () => (dispatch) => getMain(data => dispatch( {
-    type: GET_MAIN_INFO,
+
+export const getData = () => (dispatch) => getMarks(data => dispatch( {
+    type: GET_MARKS,
     payload: data
 }))
 
