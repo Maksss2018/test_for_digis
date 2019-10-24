@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {Map as GoogleMap , InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import { currentLatLng } from '../../utils/map';
 import "./scss/index.scss"
 
 const  { REACT_APP_MAP_KEY:key }= process.env;
 
 const Map = ({google, ...props}) => {
+    const [myLocation,setMyLocation] = useState({});
     const [marks,setMarks] = useState([]);
     const onMarkerClick = (e) => console.dir(e);
     const onInfoWindowClose = (e) => console.dir(e);
@@ -16,23 +18,30 @@ const Map = ({google, ...props}) => {
             lat : coords.latLng.lat(),
             lng : coords.latLng.lng(),
         };
-
-        setMarks([...marks, parsedCoords]);
+         setMarks([...marks, parsedCoords]);
         map.panTo(coords.latLng)
     };
     const putMarker =  (e) => console.dir(e);
+    useEffect(() => {
+        if(!myLocation.lat ){
+            currentLatLng(setMyLocation);
+        }
+    },[myLocation.lat])
+
     return (<MainJsx  onMarkerClick={onMarkerClick}
                       onInfoWindowClose={onInfoWindowClose}
                       putMarker={handleMarker}
                       coordsArr={marks}
                       google={google}
+                      myLocation={myLocation}
                       {...props}/>);
 }
 
-const MainJsx = ({google,onMarkerClick,onInfoWindowClose,putMarker,coordsArr}) => (
+const MainJsx = ({google,onMarkerClick,onInfoWindowClose,putMarker,coordsArr, myLocation}) => (
     <GoogleMap
                   zoom={14}
                   google={google}
+                  center={myLocation}
                   onClick={putMarker}
                   style={{
                       position: "relative",
