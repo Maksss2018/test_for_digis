@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { Container, Row } from 'reactstrap';
-import { BrowserRouter as Router} from 'react-router-dom';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 import HeaderRouter from "./components/header/headerRouter";
 import MainRouter from "./components/main/mainRouter";
 import MapRouter from "./components/map/MapRouter";

@@ -9,9 +9,6 @@ const arr = [
         component: ()=> <Main/>,
         exact: true
     },
-    {
-        render: ()=> ( <h1>404 ERROR  page not found</h1> ),
-    }
 ];
 
 const AboutRouter = () => (<RouterLayout listOfComponents={arr}/>);

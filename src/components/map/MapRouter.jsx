@@ -1,16 +1,18 @@
 import React from 'react';
 import Map from "./Map";
 import RouterLayout from "../../routerComponents/RouterLayout";
+import {Col} from "reactstrap";
 
 
 const arr = [
     {
         path:"/map",
-        component: ()=> <Map/>,
+        component: ()=> <Col
+            id="container-map "
+            xs={12}>
+            <Map/>
+        </Col> ,
         exact: true
-    },
-    {
-        render: ()=> ( <h1>404 ERROR  page not found</h1> ),
     }
 ];
 

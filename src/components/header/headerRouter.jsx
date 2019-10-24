@@ -8,12 +8,12 @@ import RouterLayout from "../../routerComponents/RouterLayout";
 
 const arr = [
     {
-        path:"/login/*",
+        path:"/map",
         component: ()=> <Header/>,
         exact: true
     },
     {
-        path:"/login",
+        path:"/main/login",
         component: ()=> <HeaderVisiter logingin={true} />,
         exact: true
     },

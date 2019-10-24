@@ -1,0 +1,8 @@
+#container-map{
+  background-color: blue!important;
+  & > div{
+    position: relative;
+    width: 100%;
+
+  }
+}
