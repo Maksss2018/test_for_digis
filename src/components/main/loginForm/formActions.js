@@ -1,4 +1,5 @@
 import { getUserData } from '../../../api';
+import { store } from "../../../utils/localStorage";
 import {
     LOG_IN_USER,
     LOG_OUT_USER,
@@ -12,11 +13,12 @@ export const userLogin = (inputs) => (dispatch) =>{
     setLoader(LOG_IN_USER);
     getUserData( (data)=>{
         if(data.error){
-             dispatch({
+         return     dispatch({
                 type: AUTH_ERROR,
             })
         }
-         dispatch({
+        store("user", data[0]);
+        return  dispatch({
             type: AUTH_USER,
             payload: data[0]
         })

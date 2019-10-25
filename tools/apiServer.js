@@ -18,7 +18,7 @@ server.use((req, res, next) => {
   }
   next()
 })
-server.get("/usersMarks", function(req, res, next) {
+server.post("/usersMarks", function(req, res, next) {
   const error = validate(req.body)
   console.log(` !!!!req = ${JSON.stringify(req)}`);
   if (error) {

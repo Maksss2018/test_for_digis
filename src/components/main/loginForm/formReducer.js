@@ -1,3 +1,4 @@
+import immutable from 'immutability-helper';
 import {
     LOG_IN_USER,
     LOG_OUT_USER,
@@ -9,7 +10,7 @@ export default  (state = null, action) => {
 
     switch (action.type) {
         case LOG_IN_USER:
-            return action.payload;
+            return {...state, userInfo: {$set: action.payload}};
         case LOG_OUT_USER:
             return action.payload;
         case LOG_IN_ERROR:

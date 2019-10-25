@@ -15,7 +15,7 @@ const linksMap = [
     {path:"/map",name:"Map"}
 ]
 
-const Header = ({  main, dispatch,...props }) => {
+const Header = () => {
     return (<CommonHeaderWrapper>
         <Template />
     </CommonHeaderWrapper>);
@@ -37,9 +37,6 @@ Header.propTypes = {
     props: PropTypes.any,
 };
 
-const stateFromProps = ({ main }) => ({ main });
-const mapDispatchToProps = dispatch =>{
-    return {
-    reqData: () => dispatch(getData())
-}};
+const stateFromProps = ({ userInfo }) => ({ userInfo });
+
 export default connect(stateFromProps )(Header);

@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useHistory } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { userLogin } from './formActions';
 import './scss/index.scss';
 
-const LoginForm = ({ loginAs, userInfo }) => {
-     const { push } = useHistory();
+const LoginForm = ({ loginAs }) => {
     const [ inputs, setInputs] = useState({})
 
     const changeInputsValue = (e) => {
@@ -22,12 +20,6 @@ const LoginForm = ({ loginAs, userInfo }) => {
         }
          /*TODO: add validation for inputs fields if there will be some time*/
     }
-    useEffect(()=>{
-        if(userInfo!==null){
-            console.dir({"s":userInfo})
-            push(`/map${userInfo.auth!=="admin"?"":"/admin"}`);
-        }
-    },[userInfo])
     return ( <MainJsx handleSubmit={sendData} handelChange={changeInputsValue} inputs={inputs} />);
 }
 const MainJsx = ({handelChange, handleSubmit}) => {
@@ -61,8 +53,7 @@ Form.propTypes = {
     props: PropTypes.any,
 };
 
-const stateFromProps = ({ main,userInfo}) => ({ main, userInfo });
 const mapDispatchToProps = dispatch =>({
     loginAs: (inputs) => dispatch(userLogin(inputs))
 });
-export default connect(stateFromProps,mapDispatchToProps )(LoginForm);
+export default connect( null,mapDispatchToProps )(LoginForm);
