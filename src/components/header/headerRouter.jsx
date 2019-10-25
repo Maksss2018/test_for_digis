@@ -32,6 +32,6 @@ const arr = [
     },
 ];
 
-const HeaderRouter = ({ userInfo }) => (<RouterLayout listOfComponents={arr}/>);
+const HeaderRouter = () => (<RouterLayout listOfComponents={arr}/>);
 
 export default HeaderRouter;

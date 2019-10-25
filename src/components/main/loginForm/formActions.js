@@ -1,4 +1,4 @@
-import { getUserData } from '../../../api';
+import { getUserData, checkUserData } from '../../../api';
 import { store } from "../../../utils/localStorage";
 import {
     LOG_IN_USER,
@@ -18,6 +18,26 @@ export const userLogin = (inputs) => (dispatch) =>{
             })
         }
         store("user", data[0]);
+        return  dispatch({
+            type: AUTH_USER,
+            payload: data[0]
+        })
+    }, inputs)
+}
+
+export const userLogedIn = (inputs) => (dispatch) =>{
+    setLoader(LOG_IN_USER);
+    console.dir({data:""});
+    checkUserData( (data)=>{
+        if( data.error ){
+            return   dispatch({
+                type: AUTH_ERROR,
+            })
+        }
+
+        store("user", data[0]);
+        console.dir({data:data[0]})
+
         return  dispatch({
             type: AUTH_USER,
             payload: data[0]

@@ -1,4 +1,4 @@
-import immutable from 'immutability-helper';
+import { getStore } from '../../../utils/localStorage';
 import {
     LOG_IN_USER,
     LOG_OUT_USER,
@@ -6,11 +6,17 @@ import {
     AUTH_USER,
     AUTH_ERROR,
 } from './constants.js';
-export default  (state = null, action) => {
 
+
+export default  (state = {
+    id:false,
+    auth:false,
+    profession:false,
+    password:false,} ,
+                 action) => {
     switch (action.type) {
         case LOG_IN_USER:
-            return {...state, userInfo: {$set: action.payload}};
+            return action.payload;
         case LOG_OUT_USER:
             return action.payload;
         case LOG_IN_ERROR:
@@ -20,6 +26,6 @@ export default  (state = null, action) => {
         case AUTH_ERROR:
             return action.payload;
          default:
-            return state;
+             return state;
     }
 }

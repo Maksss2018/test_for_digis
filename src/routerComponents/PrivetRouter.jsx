@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { useHistory, useLocation } from "react-router-dom";
 import { getStore } from "../utils/localStorage";
-import {connect} from "react-redux";
+import { userLogedIn } from "./../components/main/loginForm/formActions";
 
-
-const PrivetRouter = ({  children }) => {
+const PrivetRouter = ({  children, userLogedIn }) => {
         const { push } = useHistory();
         const  { pathname } = useLocation();
         const redirect =  async ()=>{
-            const {auth} = await getStore("user");
-            console.log(" auth ",auth)
-
+            const {auth, id} = await getStore("user");
+            console.log(" auth ",id)
             if(auth){
+                await userLogedIn(id);
+
                 const adminFlag = auth === "admin"&& pathname.includes("admin");
-                console.log(" auth ",auth)
                 push(adminFlag?"/admin/map":"/map");
             }
         }
@@ -26,4 +26,12 @@ const PrivetRouter = ({  children }) => {
     );
 }
 
-export default PrivetRouter;
+const mapStateFromProps = (state) => ({})
+const mapParamsFromProps = (dispatch) => ({
+    userLogedIn: (mockToken) => dispatch(userLogedIn(mockToken))
+})
+
+export default connect(
+    mapStateFromProps,
+    mapParamsFromProps,
+)(PrivetRouter);

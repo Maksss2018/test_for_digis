@@ -10,6 +10,8 @@ import configureStore from './store/configs';
 
 const store = configureStore;
 const App = function(props){
+
+
     return(<Template {...props} />);
 };
 

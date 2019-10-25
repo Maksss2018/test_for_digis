@@ -1,8 +1,11 @@
-const GET_MARKS = "GET_MARKS",
+const SET_MARKS = "SET_MARKS",
+      GET_MARKS = "GET_MARKS",
       SAVE_MARKS = "SAVE_MARKS",
       CLEAR_MARKS = "CLEAR_MARKS",
       ERROR_MARKS = "ERROR_MARKS";
-export { GET_MARKS,
+export {
+    SET_MARKS,
+    GET_MARKS,
     SAVE_MARKS,
     CLEAR_MARKS,
     ERROR_MARKS,

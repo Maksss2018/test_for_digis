@@ -1,7 +1,7 @@
 import React, {  useState,useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getData } from './../headerActions';
+import { saveMarks } from './../headerActions';
 import CommonHeaderWrapper from "../../common/CommonHeaderWrapper";
 import { useLocation } from "react-router-dom";
 import {Nav, NavItem, NavLink} from "reactstrap";
@@ -12,9 +12,15 @@ const linksMap = [
     {path:"/map",name:"Map"}
 ]
 
-const Header = ({  main, dispatch,...props }) => {
+const Header = ({  main, mapInfo, id, saveData, dispatch,...props }) => {
     const { pathname } = useLocation();
     const [ admin, setAdmin ] = useState(false);
+    const  handleSave = (e)=>{
+        e.preventDefault();
+        if(mapInfo.length){
+            saveData( mapInfo, id );
+        }
+    }
     useEffect(()=>{
         if( pathname.includes("admin") ){
             setAdmin(true);
@@ -22,10 +28,10 @@ const Header = ({  main, dispatch,...props }) => {
     },[]);
 
     return (<CommonHeaderWrapper>
-        <Template flagSaveBtn={admin}/>
+        <Template flagSaveBtn={admin}  handleSave={handleSave}/>
     </CommonHeaderWrapper>);
 }
-const Template = ({flagSaveBtn}) => (<>
+const Template = ({ flagSaveBtn, handleSave, disableFlag }) => (<>
     <Nav className="ml-auto" navbar>
         {linksMap.map(({path,name},ind)=>(
             <NavItem key={`${ind}-links-nav-bar`}>
@@ -37,7 +43,7 @@ const Template = ({flagSaveBtn}) => (<>
                 <PrimerButton outline activeClass=" mx-2 " color="danger" name=" Clear marks " />
             </NavItem>
             <NavItem >
-                <PrimerButton activeClass=" mx-2 "  name=" Save marks " />
+                <PrimerButton  onClick={handleSave} activeClass={`  mx-2 `}  name=" Save marks " />
             </NavItem>
         </>)}
         <LogButton logingin={true} />
@@ -48,9 +54,8 @@ Header.propTypes = {
     props: PropTypes.any,
 };
 
-const stateFromProps = ({ main }) => ({ main });
-const mapDispatchToProps = dispatch =>{
-    return {
-    reqData: () => dispatch(getData())
-}};
-export default connect(stateFromProps )(Header);
+const stateFromProps = ({ main, mapInfo, userInfo:{ id }}) => ({ main, mapInfo, id });
+const mapDispatchToProps = dispatch =>({
+    saveData: (arr,id) => dispatch(saveMarks(arr,id))
+});
+export default connect( stateFromProps, mapDispatchToProps )(Header);

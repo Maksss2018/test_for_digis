@@ -1,17 +1,21 @@
-import { GET_MARKS,
+import {
+    GET_MARKS,
     SAVE_MARKS,
     CLEAR_MARKS,
-    ERROR_MARKS,
+    ERROR_MARKS, SET_MARKS,
 } from './constants';
-export default  (state = null, action) => {
+export default  (state = [], action) => {
+
     switch (action.type) {
         case GET_MARKS:
-            console.log("GET_MAIN_INFO REDUCER");
             return action.payload;
 
         case SAVE_MARKS:
-            console.log("LOADING_MAIN_INFO");
             return action.payload;
+
+        case SET_MARKS:
+            return action.payload;
+
          default:
             return state;
     }

@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import { Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { userLogin } from './formActions';
 import './scss/index.scss';
 
 const LoginForm = ({ loginAs }) => {
+    const { push } = useHistory();
     const [ inputs, setInputs] = useState({})
 
     const changeInputsValue = (e) => {
@@ -16,6 +18,7 @@ const LoginForm = ({ loginAs }) => {
     const sendData = (e) => {
         e.preventDefault();
         if(!inputs.error){
+            push("/map");
             loginAs(inputs);
         }
          /*TODO: add validation for inputs fields if there will be some time*/

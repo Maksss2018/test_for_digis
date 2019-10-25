@@ -23,7 +23,8 @@ const getUserData = (fn,{password, user}) => fetch(`${api}/users?id_lte=${passwo
             .then(data => fn(data))
     )
     .catch(err =>  console.dir(err) )
-const getUserMarks = (fn,{password, user}) => fetch(`${api}/usersMarks?id_gte=${password}${user}`,{
+
+const checkUserData = (fn,mocketToken) => fetch(`${api}/users?id_lte=${mocketToken}`,{
     method: "GET"
 })
     .then(res =>
@@ -32,18 +33,36 @@ const getUserMarks = (fn,{password, user}) => fetch(`${api}/usersMarks?id_gte=${
     )
     .catch(err =>  console.dir(err) )
 
-const setUserMarks = (fn,{password, user}) => fetch(`${api}/usersMarks`,{
-    method: "POST",
-    body: JSON.stringify({token: `${password}${user}`} )
+const getUserMarks = (fn,mockToken="777MalyiMG") => fetch(`${api}/users_marks?user_name_gte=${mockToken}`,{
+    method: "GET"
 })
     .then(res =>
         res.json()
             .then(data => fn(data))
     )
-    .catch(err =>  console.dir(err) );
+    .catch(err =>  console.dir(err) )
+
+const saveUserMarks = (data) =>{
+    console.dir({fromAPi:true,data})
+    return fetch(`${api}/users_marks/`,{
+        method: "POST",
+        body: JSON.stringify({...data}),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(res =>
+            res.json()
+                .then(data => data)
+        )
+        .catch(err =>  console.dir(err) )
+};
 export {
     getMain,
     getUserData,
+    getUserMarks,
+    checkUserData,
+    saveUserMarks,
     /*createItem(data) {
         return request.post(`${api}/addItem`, data);
     },
