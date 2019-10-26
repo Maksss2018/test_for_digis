@@ -20,6 +20,7 @@ const Map = ({google,handleLoadMarks, id, mapInfo , updateMarks,...props}) => {
             lng: coords.latLng.lng(),
                 user_name: id
         },
+
            newArr =  [...marks, parsedCoords];
            setMarks(newArr);
            updateMarks(newArr);

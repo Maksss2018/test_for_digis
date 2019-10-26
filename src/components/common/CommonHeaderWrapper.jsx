@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {Col, Collapse, Navbar, NavbarBrand, NavbarToggler,} from 'reactstrap';
+import  PlaceTypeSelector from './../header/components/PlaceTypeSelector';
 
 const  CommonHeaderWrapper = ({ children }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -15,6 +16,7 @@ const  CommonHeaderTemplate = ({ handleToggle, isOpen, children }) => (
             <NavbarBrand href="/">Malyi VS GoogleMapAPI </NavbarBrand>
             <NavbarToggler onClick={handleToggle} />
             <Collapse className="py-auto" isOpen={isOpen} navbar>
+                <PlaceTypeSelector/>
                 {children}
             </Collapse>
         </Navbar>

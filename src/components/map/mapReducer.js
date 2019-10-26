@@ -16,6 +16,9 @@ export default  (state = [], action) => {
         case SET_MARKS:
             return action.payload;
 
+        case CLEAR_MARKS:
+            return [];
+
          default:
             return state;
     }

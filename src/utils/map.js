@@ -5,6 +5,13 @@ const currentLatLng =  (fn) => navigator.geolocation.getCurrentPosition(async (p
         lng
     })
 })
+
+const urlParamsGenerator = (params={location:"-33.8670522,151.1957362",radius:1500,type:"",keyword:''}) =>
+    Object
+        .keys(params)
+        .reduce((acc,next,ind)=>`${acc}&${next}=${params[next]}`);
+
 export {
-    currentLatLng
+    currentLatLng,
+    urlParamsGenerator,
 }

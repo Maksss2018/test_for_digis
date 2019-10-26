@@ -1,15 +1,20 @@
 import {generate as id} from "shortid"
-import { getMain, saveUserMarks } from '../../api/index';
-import { GET_MAIN_INFO,
-    LOADING_MAIN_INFO,
-    ERROR_MAIN_INFO,
-    SET_MAIN_INFO,
-} from './constants';
-import { SAVE_MARKS } from './../map/constants';
+import { getOptions, saveUserMarks, cleanAllUserMarks, getLocalPlacesByType } from '../../api/index';
+import { SAVE_MARKS, GET_MARKS, CLEAR_MARKS, GET_SELECTOR_DATA } from './../map/constants';
+import {currentLatLng} from "../../utils/map";
 
 
-export const getData = () => (dispatch) => getMain(data => dispatch( {
-    type: GET_MAIN_INFO,
+export const getTypeSelectorData = () => (dispatch) => getOptions(data => dispatch( {
+    type: GET_SELECTOR_DATA,
+    payload: data
+}))
+
+export const getLocalPlaces = (type) => (dispatch) => getLocalPlacesByType({
+    type,
+    radius:1500,
+    location: currentLatLng(({ lat,lng})=>`${lat},${lng}`)
+},data => dispatch( {
+    type: GET_MARKS,
     payload: data
 }))
 
@@ -20,3 +25,9 @@ export const saveMarks = (data,token) => (dispatch) => data.forEach((coord)=>{
         saveUserMarks(coord);
     },500);
 })
+export const cleanAll = (lisofIds) => (dispatch) => cleanAllUserMarks(lisofIds,()=>dispatch( {
+    type: CLEAR_MARKS
+}));
+export const cleanAllReducer = () => (dispatch) => dispatch( {
+    type: CLEAR_MARKS
+});

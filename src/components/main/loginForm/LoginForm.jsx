@@ -6,7 +6,7 @@ import { Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { userLogin } from './formActions';
 import './scss/index.scss';
 
-const LoginForm = ({ loginAs }) => {
+const LoginForm = ({ loginAs, isAdmin }) => {
     const { push } = useHistory();
     const [ inputs, setInputs] = useState({})
 
@@ -18,7 +18,7 @@ const LoginForm = ({ loginAs }) => {
     const sendData = (e) => {
         e.preventDefault();
         if(!inputs.error){
-            push("/map");
+            push(`${isAdmin?"/admin":""}/map`);
             loginAs(inputs);
         }
          /*TODO: add validation for inputs fields if there will be some time*/
@@ -56,7 +56,10 @@ Form.propTypes = {
     props: PropTypes.any,
 };
 
+const mapStateFromProps = ({userInfo:{auth}}) =>({
+    isAdmin: auth === "admin"
+});
 const mapDispatchToProps = dispatch =>({
     loginAs: (inputs) => dispatch(userLogin(inputs))
 });
-export default connect( null,mapDispatchToProps )(LoginForm);
+export default connect( mapStateFromProps, mapDispatchToProps )(LoginForm);
