@@ -9,7 +9,6 @@ const PrivetRouter = ({  children, userLogedIn }) => {
         const  { pathname } = useLocation();
         const redirect =  async ()=>{
             const {auth, id} = await getStore("user");
-            console.log(" auth ",id)
             if(auth){
                 await userLogedIn(id);
 

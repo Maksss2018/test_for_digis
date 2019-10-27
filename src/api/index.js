@@ -61,7 +61,6 @@ const cleanAllUserMarks = (trgList,fn) => trgList.forEach( async (id) => {
 })
 
 const saveUserMarks = (data) =>{
-    console.dir({fromAPi:true,data})
     return fetch(`${api}/users_marks/`,{
         method: "POST",
         body: JSON.stringify({...data}),

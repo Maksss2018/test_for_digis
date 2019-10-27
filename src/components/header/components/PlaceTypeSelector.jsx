@@ -23,7 +23,7 @@ const PlaceTypeSelector = ({ getOptions, headerInfo, getLocalPlaces }) => {
         }
     },[]);
     useEffect(()=>{
-        if(headerInfo!==null){
+        if(headerInfo!==null && typeof current === "string"){
             getLocalPlaces(current.replace(" ","_"));
         }
     },[current]);
@@ -36,7 +36,6 @@ const Template = ({optionsArr, handleSelect}) => (
     <Form id="form-type-selector" className=" my-auto " >
         <FormGroup className="row px-3">
             <Input
-                defualtValue={"atm"}
                 onChange={handleSelect}
                 className=" col-12 col-md-7 "
                 type="select"

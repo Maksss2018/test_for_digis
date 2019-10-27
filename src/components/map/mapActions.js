@@ -6,7 +6,6 @@ import {
 } from './constants';
 
 const getMarks = (mockToken) => (dispatch) =>{
-    console.dir({mockToken})
      getUserMarks(data => dispatch( {
             type: GET_MARKS,
             payload: data

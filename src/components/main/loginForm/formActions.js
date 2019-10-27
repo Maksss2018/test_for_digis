@@ -27,7 +27,6 @@ export const userLogin = (inputs) => (dispatch) =>{
 
 export const userLogedIn = (inputs) => (dispatch) =>{
     setLoader(LOG_IN_USER);
-    console.dir({data:""});
     checkUserData( (data)=>{
         if( data.error ){
             return   dispatch({
