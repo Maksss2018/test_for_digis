@@ -1,30 +1,29 @@
-@mixin margin-set($list, $rule, $target-name){
+@mixin margin-set($list, $rule, $target-name) {
   @each $key in $list {
-    &-margin-#{$target-name}-#{$key}{
-      @if $key != -all{
+    &-margin-#{$target-name}-#{$key} {
+      @if $key != -all {
         margin#{$key}: $rule;
       } @else {
         margin: $rule;
       }
     }
-
   }
 }
 
-@mixin borders-set($list,  $list-color, $rule , $width ){
+@mixin borders-set($list, $list-color, $rule, $width) {
   @each $key in $list {
-    &-#{$key}{
+    &-#{$key} {
       @each $name, $color in $list-color {
-        $rule-local: $rule $color!important;
-        &-#{$name}-#{$width}{
-          @if $key != all{
-            @if($name == none ){
-              border-#{$key}: none!important;;
+        $rule-local: $rule $color !important;
+        &-#{$name}-#{$width} {
+          @if $key != all {
+            @if ($name == none) {
+              border-#{$key}: none !important;
             } @else {
               border-#{$key}: $rule-local;
             }
           } @else {
-            @if($name == none ){
+            @if ($name == none) {
               border: none !important;
             } @else {
               border: $rule-local;
@@ -36,19 +35,19 @@
   }
 }
 
-@mixin single-side-rule-set($list-length, $step, $rule-name, $px){
-  @for $i from 1 through $list-length{
-    &#{$i*$step}{
-      #{$rule-name}: $i*$step+$px!important;
+@mixin single-side-rule-set($list-length, $step, $rule-name, $px) {
+  @for $i from 1 through $list-length {
+    &#{$i*$step} {
+      #{$rule-name}: $i * $step + $px !important;
     }
   }
 }
 
-@mixin generate-class($list-length, $class-common-name, $class-special-name, $rule, $rule-name ){
-  @for   $i from 1 through $list-length {
-    .#{$class-common-name}-#{$class-special-name}{
-      $result:$rule*$i;
-      #{$rule-name}: $result+$px;
+@mixin generate-class($list-length, $class-common-name, $class-special-name, $rule, $rule-name) {
+  @for $i from 1 through $list-length {
+    .#{$class-common-name}-#{$class-special-name} {
+      $result: $rule * $i;
+      #{$rule-name}: $result + $px;
     }
   }
 }

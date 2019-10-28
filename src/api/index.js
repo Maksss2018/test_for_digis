@@ -1,93 +1,87 @@
-import { urlParamsGenerator } from "./../utils/map";
-const  { REACT_APP_API_URL:api, REACT_APP_MAP_KEY:googleKey } = process.env;
+import { urlParamsGenerator } from './../utils/map';
+const { REACT_APP_API_URL: api, REACT_APP_MAP_KEY: googleKey } = process.env;
 
 /* TODO: Make crossdomain request  to get nearest locations by type */
 //location=-33.8670522,151.1957362&radius=1500&type=restaurant&keyword=cruise&key=
 
-const getLocalPlacesByType = (params,fn) => {
-    return  fetch(`http://localhost:8082/get-nearest-places?${urlParamsGenerator(params)}key=${googleKey}`,{
-       method: 'GET',
-       headers:{
-           'Content-Type': 'application/json'
-       }
-   })
-        .then((res) =>res.json()).then((res) =>{
-            fn(res)
-            return res
-        })
-}
+const getLocalPlacesByType = (params, fn) => {
+  return fetch(
+    `http://localhost:8082/get-nearest-places?${urlParamsGenerator(params)}key=${googleKey}`,
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    },
+  )
+    .then(res => res.json())
+    .then(res => {
+      fn(res);
+      return res;
+    });
+};
 
-const getMain = (fn) => fetch(`${api}/main`)
-    .then(res =>
-        res.json()
-            .then(data => fn(data))
-    )
-    .catch(err => err.json().then((res)=>fn(res)))
+const getMain = fn =>
+  fetch(`${api}/main`)
+    .then(res => res.json().then(data => fn(data)))
+    .catch(err => err.json().then(res => fn(res)));
 
-const getOptions = (fn) => fetch(`${api}/places_types`)
-    .then(res =>
-        res.json()
-            .then(data => fn(data))
-    )
-    .catch(err => err.json().then((res)=>fn(res)))
+const getOptions = fn =>
+  fetch(`${api}/places_types`)
+    .then(res => res.json().then(data => fn(data)))
+    .catch(err => err.json().then(res => fn(res)));
 
-const getUserData = (fn,{password, user}) => fetch(`${api}/users?id_lte=${password}${user}`,{
-       method: "GET"
-     })
-    .then(res =>
-        res.json()
-            .then(data => fn(data))
-    )
-    .catch(err =>  console.dir(err) )
+const getUserData = (fn, { password, user }) =>
+  fetch(`${api}/users?id_lte=${password}${user}`, {
+    method: 'GET',
+  })
+    .then(res => res.json().then(data => fn(data)))
+    .catch(err => console.dir(err));
 
-const checkUserData = (fn,mocketToken) => fetch(`${api}/users?id_lte=${mocketToken}`,{
-    method: "GET"
-})
-    .then(res =>
-        res.json()
-            .then(data => fn(data))
-    )
-    .catch(err =>  console.dir(err) )
+const checkUserData = (fn, mocketToken) =>
+  fetch(`${api}/users?id_lte=${mocketToken}`, {
+    method: 'GET',
+  })
+    .then(res => res.json().then(data => fn(data)))
+    .catch(err => console.dir(err));
 
-const getUserMarks = (fn,mockToken) => fetch(`${api}/users_marks?user_name_like=${mockToken}`,{
-    method: "GET"
-})
-    .then(res =>
-        res.json()
-            .then(data => fn(data))
-    )
-    .catch(err =>  console.dir(err) )
+const getUserMarks = (fn, mockToken) =>
+  fetch(`${api}/users_marks?user_name_like=${mockToken}`, {
+    method: 'GET',
+  })
+    .then(res => res.json().then(data => fn(data)))
+    .catch(err => console.dir(err));
 
-const cleanAllUserMarks = (trgList,fn) => trgList.forEach( async (id) => {
-   await fetch(`${api}/users_marks/${id}`,{
-        method: "DELETE",
-    }).then(()=>fn()).catch(err =>  console.dir(err) )
-})
-
-const saveUserMarks = (data) =>{
-    return fetch(`${api}/users_marks/`,{
-        method: "POST",
-        body: JSON.stringify({...data}),
-        headers: {
-            'Content-Type': 'application/json',
-        },
+const cleanAllUserMarks = (trgList, fn) =>
+  trgList.forEach(async id => {
+    await fetch(`${api}/users_marks/${id}`, {
+      method: 'DELETE',
     })
-        .then(res =>
-            res.json()
-                .then(data => data)
-        )
-        .catch(err =>  console.dir(err) )
+      .then(() => fn())
+      .catch(err => console.dir(err));
+  });
+
+const saveUserMarks = data => {
+  return fetch(`${api}/users_marks/`, {
+    method: 'POST',
+    body: JSON.stringify({ ...data }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(res => res.json().then(data => data))
+    .catch(err => console.dir(err));
 };
 export {
-    getMain,
-    getOptions,
-    getUserData,
-    getUserMarks,
-    checkUserData,
-    saveUserMarks,
-    cleanAllUserMarks,
-    getLocalPlacesByType,
-    /*createItem(data) {
+  getMain,
+  getOptions,
+  getUserData,
+  getUserMarks,
+  checkUserData,
+  saveUserMarks,
+  cleanAllUserMarks,
+  getLocalPlacesByType,
+  /*createItem(data) {
         return request.post(`${api}/addItem`, data);
     },
 
@@ -100,5 +94,4 @@ export {
         data.append('name', Data.name);
         return request.post(`${api}/addPhoto`,data );
     }*/
-}
-
+};

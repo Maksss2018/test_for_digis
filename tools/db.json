@@ -234,6 +234,186 @@
       "lng": "-122.39342646333836",
       "id": "Ro6f-3VkL",
       "createdAt": 1571998833316
+    },
+    {
+      "lat": 37.77110989999999,
+      "lng": -122.4073786,
+      "id": "BLPsvEI1B",
+      "name": "Wells Fargo ATM",
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/atm-71.png",
+      "user": "777MalyiMG",
+      "createdAt": 1572245994939
+    },
+    {
+      "lat": 37.7855195,
+      "lng": -122.4218104,
+      "id": "_p8h4D2Iw",
+      "name": "Cardtronics ATM",
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/atm-71.png",
+      "user": "777MalyiMG",
+      "createdAt": 1572245994941
+    },
+    {
+      "lat": 37.778403,
+      "lng": -122.414718,
+      "id": "aV18aZoos",
+      "name": "Chase Bank",
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/bank_dollar-71.png",
+      "user": "777MalyiMG",
+      "createdAt": 1572245994942
+    },
+    {
+      "lat": 37.784762,
+      "lng": -122.419279,
+      "id": "7P5wFWQwb",
+      "name": "Mitchell Brothers O'Farrell Theatre",
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+      "user": "777MalyiMG",
+      "createdAt": 1572245994950
+    },
+    {
+      "lat": 37.7688946,
+      "lng": -122.4279658,
+      "id": "TKkeZ5q97",
+      "name": "Wells Fargo Bank",
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/bank_dollar-71.png",
+      "user": "777MalyiMG",
+      "createdAt": 1572245994950
+    },
+    {
+      "lat": 37.7815728,
+      "lng": -122.4209708,
+      "id": "xHxTdAxrH",
+      "name": "Bank of America ATM",
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/atm-71.png",
+      "user": "777MalyiMG",
+      "createdAt": 1572245994950
+    },
+    {
+      "lat": 37.78091000000001,
+      "lng": -122.4234546,
+      "id": "zA-PcCESe",
+      "name": "San Francisco Federal Credit Union",
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+      "user": "777MalyiMG",
+      "createdAt": 1572245994950
+    },
+    {
+      "lat": 37.7774442,
+      "lng": -122.4169321,
+      "id": "gcJc3sZmP",
+      "name": "Redwood Credit Union",
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+      "user": "777MalyiMG",
+      "createdAt": 1572245994970
+    },
+    {
+      "lat": 37.77824319999999,
+      "lng": -122.4160302,
+      "id": "qMmb--p6y",
+      "name": "Wells Fargo Bank",
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/bank_dollar-71.png",
+      "user": "777MalyiMG",
+      "createdAt": 1572245994972
+    },
+    {
+      "lat": 37.7733876,
+      "lng": -122.4084288,
+      "id": "QZfsY8NAG",
+      "name": "Shell",
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/gas_station-71.png",
+      "user": "777MalyiMG",
+      "createdAt": 1572245995021
+    },
+    {
+      "lat": 37.785329,
+      "lng": -122.430369,
+      "id": "Zmd2S6Aji",
+      "name": "AFFA, Inc.",
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/atm-71.png",
+      "user": "777MalyiMG",
+      "createdAt": 1572245995023
+    },
+    {
+      "lat": 37.780311,
+      "lng": -122.419987,
+      "id": "XseNO4K_9H",
+      "name": "Chase Bank",
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/bank_dollar-71.png",
+      "user": "777MalyiMG",
+      "createdAt": 1572245995031
+    },
+    {
+      "lat": 37.7828491,
+      "lng": -122.4079957,
+      "id": "VHqyxkuWg",
+      "name": "SF Fire Credit Union",
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+      "user": "777MalyiMG",
+      "createdAt": 1572245995031
+    },
+    {
+      "lat": 37.7648713,
+      "lng": -122.4202792,
+      "id": "F2viipnEh",
+      "name": "Wells Fargo Bank",
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/bank_dollar-71.png",
+      "user": "777MalyiMG",
+      "createdAt": 1572245995036
+    },
+    {
+      "lat": 37.7666309,
+      "lng": -122.409208,
+      "id": "rN2mDOuvUm",
+      "name": "Wells Fargo Bank",
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/bank_dollar-71.png",
+      "user": "777MalyiMG",
+      "createdAt": 1572245995039
+    },
+    {
+      "lat": 37.78137820000001,
+      "lng": -122.4190154,
+      "id": "M8lFvJkxF5",
+      "name": "Golden 1 Credit Union",
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+      "user": "777MalyiMG",
+      "createdAt": 1572245995039
+    },
+    {
+      "lat": 37.7820212,
+      "lng": -122.4184864,
+      "id": "PIAhqDBmzU",
+      "name": "Provident Credit Union San Francisco (Federal Building Community Branch)",
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+      "user": "777MalyiMG",
+      "createdAt": 1572245995041
+    },
+    {
+      "lat": 37.7781117,
+      "lng": -122.4058001,
+      "id": "ClwwRaKxXs",
+      "name": "Access ATM, Inc.",
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/atm-71.png",
+      "user": "777MalyiMG",
+      "createdAt": 1572245995051
+    },
+    {
+      "lat": 37.7854672,
+      "lng": -122.4292828,
+      "id": "7OdbHAbYZ-",
+      "name": "Union Bank",
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/bank_dollar-71.png",
+      "user": "777MalyiMG",
+      "createdAt": 1572245995051
+    },
+    {
+      "lat": 37.7781117,
+      "lng": -122.4058001,
+      "id": "wBTBSpMEqM",
+      "name": "Merrimak Capital Corporation (ATM)",
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/atm-71.png",
+      "user": "777MalyiMG",
+      "createdAt": 1572245995053
     }
   ],
   "places_types": [

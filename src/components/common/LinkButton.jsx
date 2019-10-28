@@ -1,14 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-LinkButton.propTypes = {
-    
-};
+LinkButton.propTypes = {};
 
 function LinkButton(props) {
-    return (
-        <div></div>
-    );
+  return <div></div>;
 }
 
 export default LinkButton;

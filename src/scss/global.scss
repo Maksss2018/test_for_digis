@@ -1,16 +1,16 @@
-@import "./mixins.scss";
-body{
+@import './mixins.scss';
+body {
   background-color: aqua;
   height: 100%;
   overflow-x: hidden;
-  #root{
+  #root {
     height: 100%;
-    .container-fluid{
+    .container-fluid {
       height: 100vh;
     }
   }
 }
-.vh-{
+.vh- {
   @include single-side-rule-set(9, 10, height, vh);
   @include single-side-rule-set(18, 5, height, vh);
 }
