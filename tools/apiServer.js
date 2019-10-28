@@ -18,6 +18,9 @@ server.use((req, res, next) => {
   }
   next()
 })
+
+
+
 server.post("/users/", function(req, res, next) {
   if (error) {
     res.status(400).send(error)
@@ -27,6 +30,7 @@ server.post("/users/", function(req, res, next) {
   }
 
 })
+
 server.use(router)
 
 const port = 3001

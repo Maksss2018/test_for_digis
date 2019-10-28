@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getMarks, setMarks } from './mapActions';
+import { getMarks, setMarks, saveCrCoords } from './mapActions';
 import {Map as GoogleMap , Marker, GoogleApiWrapper} from 'google-maps-react';
 import { currentLatLng } from '../../utils/map';
-
 
 import "./scss/index.scss"
 
 const  { REACT_APP_MAP_KEY:key }= process.env;
 
-const Map = ({google,handleLoadMarks, id, mapInfo , updateMarks,...props}) => {
+const Map = ({google,handleLoadMarks, saveCrCoords, id, mapInfo , updateMarks,...props}) => {
     const [loadingFlag,setLoadingFlag] = useState(false);
     const [myLocation,setMyLocation] = useState({});
     const [marks,setMarks] = useState([]);
@@ -59,19 +58,27 @@ const Map = ({google,handleLoadMarks, id, mapInfo , updateMarks,...props}) => {
 
         },[myLocation.lat])
 
+     useEffect(()=>{
+
+         saveCrCoords(myLocation)
+
+     },[myLocation]);
     return (<MainJsx
                       coordsArr={
-                          mapInfo.length !== 0  ? mapInfo.map((coords)=>(<Marker
+                          mapInfo.length !== 0  ? mapInfo.map(({name,icon,...coords})=>(
+                              <Marker
                               key={Object.values(coords).reduce((acc,next) => `${acc}${next}`)}
                               position={{...coords}}
-                              name={'Current location'} />
+                              name={name}
+                              icon={icon}
+                              />
                       )):[]}
                       mapConfigs={mapConfigs}
                       {...props}
              />);
 }
 
-const MainJsx = ({ onInfoWindowClose, coordsArr, mapConfigs }) => (
+const MainJsx = ({ coordsArr, mapConfigs }) => (
               <GoogleMap {...mapConfigs}>
                    {
                        coordsArr
@@ -85,6 +92,7 @@ Map.propTypes = {
 const stateFromProps = ({ userInfo:{id}, mapInfo }) => ({ id, mapInfo });
 const paramsFromProps = (dispatch)=>({
     handleLoadMarks: (token) => dispatch(getMarks(token)),
-    updateMarks: (marks) => dispatch(setMarks(marks))
+    updateMarks: (marks) => dispatch(setMarks(marks)),
+    saveCrCoords: (mark) => dispatch(saveCrCoords(mark))
 });
 export default connect(stateFromProps, paramsFromProps)( GoogleApiWrapper({apiKey: `${key}`})(Map));

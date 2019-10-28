@@ -3,6 +3,7 @@ import {
     SET_MARKS,
     GET_MARKS,
     ERROR_MARKS,
+    SAVE_CENTER_MARK,
 } from './constants';
 
 const getMarks = (mockToken) => (dispatch) =>{
@@ -18,8 +19,15 @@ const setMarks = (marks) => (dispatch) =>{
     payload: marks
 })
 };
+const saveCrCoords = (center) =>  (dispatch) =>{
+    return dispatch( {
+        type: SAVE_CENTER_MARK,
+        payload: center
+    })
+};
 
 export {
     getMarks,
-    setMarks
+    setMarks,
+    saveCrCoords
 }

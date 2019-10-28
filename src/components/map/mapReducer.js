@@ -2,7 +2,7 @@ import {
     GET_MARKS,
     SAVE_MARKS,
     CLEAR_MARKS,
-    ERROR_MARKS, SET_MARKS,
+    ERROR_MARKS, SET_MARKS, GET_SPECIAL_MARKS,
 } from './constants';
 export default  (state = [], action) => {
 
@@ -15,6 +15,9 @@ export default  (state = [], action) => {
 
         case SET_MARKS:
             return action.payload;
+
+        case GET_SPECIAL_MARKS:
+            return [...state,  ...action.payload];
 
         case CLEAR_MARKS:
             return [];

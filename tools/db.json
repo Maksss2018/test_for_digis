@@ -17,33 +17,9 @@
       "auth": "user",
       "profession": "JavaScript developer",
       "password": "54a6s546a5s65a4sa5s654s"
-    },
-    {
-      "createdAt": 1571992169246,
-      "id": "gyoNi3p"
-    },
-    {
-      "createdAt": 1571992251545,
-      "id": "b3N0jn5"
     }
   ],
   "users_marks": [
-    {
-      "createdAt": 1571992399615,
-      "id": 1
-    },
-    {
-      "createdAt": 1571992483842,
-      "id": 2
-    },
-    {
-      "createdAt": 1571992505590,
-      "id": 3
-    },
-    {
-      "createdAt": 1571992534640,
-      "id": 4
-    },
     {
       "token": "777MalyiMG",
       "createdAt": 1571992554053,

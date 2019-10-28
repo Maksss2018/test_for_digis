@@ -31,4 +31,4 @@ const Template = () => (
     </Container>
 )
 
-export default   App;
+export default App;

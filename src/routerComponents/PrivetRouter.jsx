@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { useHistory, useLocation } from "react-router-dom";
 import { getStore } from "../utils/localStorage";
 import { userLogedIn } from "./../components/main/loginForm/formActions";
+import {currentLatLng} from "../utils/map";
 
 const PrivetRouter = ({  children, userLogedIn }) => {
         const { push } = useHistory();

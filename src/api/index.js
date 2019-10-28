@@ -1,17 +1,21 @@
 import { urlParamsGenerator } from "./../utils/map";
 const  { REACT_APP_API_URL:api, REACT_APP_MAP_KEY:googleKey } = process.env;
 
-const  apiUrl="https://maps.googleapis.com/maps/api/place/nearbysearch/json?";
 /* TODO: Make crossdomain request  to get nearest locations by type */
 //location=-33.8670522,151.1957362&radius=1500&type=restaurant&keyword=cruise&key=
 
-const getLocalPlacesByType = (params,fn) => fetch(`${apiUrl}${urlParamsGenerator(params)}key=${googleKey}`)
-    .then(res =>{
-        console.dir({ getLocalPlacesByType:res })
-        return res.json()
-            .then(data => fn(data))
-    })
-    .catch(err => err.json().then((res)=>fn(res)))
+const getLocalPlacesByType = (params,fn) => {
+    return  fetch(`http://localhost:8082/get-nearest-places?${urlParamsGenerator(params)}key=${googleKey}`,{
+       method: 'GET',
+       headers:{
+           'Content-Type': 'application/json'
+       }
+   })
+        .then((res) =>res.json()).then((res) =>{
+            fn(res)
+            return res
+        })
+}
 
 const getMain = (fn) => fetch(`${api}/main`)
     .then(res =>
@@ -45,7 +49,7 @@ const checkUserData = (fn,mocketToken) => fetch(`${api}/users?id_lte=${mocketTok
     )
     .catch(err =>  console.dir(err) )
 
-const getUserMarks = (fn,mockToken="777MalyiMG") => fetch(`${api}/users_marks?user_name_like=${mockToken}`,{
+const getUserMarks = (fn,mockToken) => fetch(`${api}/users_marks?user_name_like=${mockToken}`,{
     method: "GET"
 })
     .then(res =>

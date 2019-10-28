@@ -3,13 +3,12 @@ import { connect } from 'react-redux';
 import {generate as id} from "shortid"
 import {
     FormGroup,
-    Label,
     Input
 } from 'reactstrap';
 import Form from "reactstrap/es/Form";
-import { getTypeSelectorData } from '../headerActions';
+import { getTypeSelectorData, getLocalPlaces } from '../headerActions';
 
-const PlaceTypeSelector = ({ getOptions, headerInfo, getLocalPlaces }) => {
+const PlaceTypeSelector = ({ getOptions, headerInfo, getLocalPlaces, center }) => {
     const  [ current, setCurrent ] = useState(0);
     const selectOption = (e) =>{
         let trg = e.target.value;
@@ -17,25 +16,43 @@ const PlaceTypeSelector = ({ getOptions, headerInfo, getLocalPlaces }) => {
             setCurrent(trg);
         }
     };
+
     useEffect(()=>{
-        if(headerInfo === null){
-            getOptions();
-        }
-    },[]);
-    useEffect(()=>{
-        if(headerInfo!==null && typeof current === "string"){
-            getLocalPlaces(current.replace(" ","_"));
+
+        if( headerInfo!==null && typeof current === "string" ){
+
+            const { lat, lng } = center;
+
+            getLocalPlaces({
+                type: headerInfo[Number(current)].replace(" ","_"),
+                radius:1500,
+                location: lng? `${lat},${lng}` : `37.776896408096846,-122.41965632488001`
+            });
+
         }
     },[current]);
+
+    useEffect(()=>{
+
+        if(headerInfo === null){
+
+            getOptions();
+
+        }
+
+    },[]);
+
     return(<Template
+        current={current}
         handleSelect={selectOption}
         optionsArr={headerInfo!==null?headerInfo:[]} />);
 }
 
-const Template = ({optionsArr, handleSelect}) => (
+const Template = ({optionsArr, handleSelect, current}) => (
     <Form id="form-type-selector" className=" my-auto " >
         <FormGroup className="row px-3">
             <Input
+                defaultValue={current}
                 onChange={handleSelect}
                 className=" col-12 col-md-7 "
                 type="select"
@@ -50,10 +67,10 @@ const Template = ({optionsArr, handleSelect}) => (
         </FormGroup>
     </Form>
 )
-const mapStateFromProps = ({ headerInfo })=>({ headerInfo });
-const dispathcedFromProps = dispatch =>({
+const mapStateFromProps = ({ headerInfo, mainInfo:{center} })=>({ headerInfo, center });
+const dispatchedFromProps = dispatch =>({
     getOptions: () => dispatch(getTypeSelectorData()),
-    getLocalPlaces : (type) => dispatch(getTypeSelectorData(type))
+    getLocalPlaces : (type) => dispatch(getLocalPlaces(type))
 });
 
-export default connect( mapStateFromProps, dispathcedFromProps)(PlaceTypeSelector);
+export default connect( mapStateFromProps, dispatchedFromProps)(PlaceTypeSelector);

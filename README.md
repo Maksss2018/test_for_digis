@@ -13,9 +13,9 @@
 * [x] Draw simple map with point of your geolocation
 * [x] Implement zoom in/out buttons on a map
 * [X] Click on a map has to create a marker
-* [ ] Implement save and show buttons – save button saves all the created markers, show button – shows it
+* [x] Implement save and show buttons – save button saves all the created markers, show button – shows it
 * [X] Review https://developers.google.com/maps/documentation/
-* [ ] Create list with type of objects to be chosen (pharmacies, gas stations, schools,  restaurants) so click on the list item has to draw markers on the map with the closest chosen objects
+* [x] Create list with type of objects to be chosen (pharmacies, gas stations, schools,  restaurants) so click on the list item has to draw markers on the map with the closest chosen objects
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -24,7 +24,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm start:app`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
