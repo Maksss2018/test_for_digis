@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { getStore } from '../utils/localStorage';
 import { userLogedIn } from './../components/main/loginForm/formActions';
-import { currentLatLng } from '../utils/map';
 
 const PrivetRouter = ({ children, userLogedIn }) => {
   const { push } = useHistory();
@@ -12,9 +11,8 @@ const PrivetRouter = ({ children, userLogedIn }) => {
     const { auth, id } = await getStore('user');
     if (auth) {
       await userLogedIn(id);
-
       const adminFlag = auth === 'admin' && pathname.includes('admin');
-      push(adminFlag ? '/admin/map' : '/map');
+      push(adminFlag ? '/admin/map' : '/login');
     }
   };
   useEffect(() => {
