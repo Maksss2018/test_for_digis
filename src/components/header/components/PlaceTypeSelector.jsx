@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { generate as id } from 'shortid';
-import { FormGroup, Input } from 'reactstrap';
-import Form from 'reactstrap/es/Form';
+import { FormGroup, Input, Form } from 'reactstrap';
 import { getTypeSelectorData, getLocalPlaces } from '../headerActions';
 
 const PlaceTypeSelector = ({ getOptions, headerInfo, getLocalPlaces, center }) => {

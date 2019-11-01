@@ -4,7 +4,7 @@ import { socials } from './Constants';
 const SocialsList = ({ WrapperComponent }) => {
   return (
     <>
-      <WrapperComponent className=" d-flex align-items-center text-light ">
+      <WrapperComponent className=" d-none d-md-flex align-items-center text-light ">
         You can find me at:{`  `}
       </WrapperComponent>
       {socials.map((icon, ind) => (

@@ -7,3 +7,20 @@ span {
     margin-bottom: 0 !important;
   }
 }
+nav.navbar.navbar-expand-md.navbar-light.bg-dark{
+  .navbar-toggler-icon {
+    background-image: url("/logo.svg")!important;
+  }
+
+}
+ ul.ml-auto.navbar-nav{
+  li > a, span, button{
+    @media all and ( max-width: 640px ){
+      text-align: center;
+    }
+  }
+}
+
+ button.navbar-toggler{
+ color: #9fcdff;
+}
