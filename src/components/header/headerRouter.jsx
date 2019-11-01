@@ -4,7 +4,6 @@ import HeaderAdmin from './components/HeaderAdmin';
 import HeaderVisiter from './components/HeaderVisiter';
 import './scss/index.scss';
 import RouterLayout from '../../routerComponents/RouterLayout';
-import { useHistory } from 'react-router-dom';
 
 const arr = [
   {

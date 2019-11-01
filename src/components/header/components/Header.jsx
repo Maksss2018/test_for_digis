@@ -1,25 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getData } from './../headerActions';
 import { Nav, NavItem, NavLink } from 'reactstrap';
 import CommonHeaderWrapper from '../../common/CommonHeaderWrapper';
 import LogButton from './LogButton';
 
 const linksMap = [{ path: '/about', name: 'About' }, { path: '/map', name: 'Map' }];
 
-const Header = () => {
-  return (
+const Header = ({auth,id}) => {
+    const [name, setName] = useState("Visiter");
+    useEffect(()=>{
+        if(auth){
+            setName(id);
+        }
+    },[auth]);
+    return (
     <CommonHeaderWrapper>
-      <Template />
+      <Template authorName={name} />
     </CommonHeaderWrapper>
   );
 };
-const Template = ({ handleToggle, isOpen }) => (
+const Template = ({authorName}) => (
   <>
     <>
       <Nav className="ml-auto" navbar>
-        {linksMap.map(({ path, name }, ind) => (
+          <NavItem >
+              <span className=" nav-link ">
+               Hello {authorName}
+              </span>
+          </NavItem>
+          {linksMap.map(({ path, name }, ind) => (
           <NavItem key={`${ind}-links-nav-bar`}>
             <NavLink href={`${path}`}>{name}</NavLink>
           </NavItem>
@@ -34,6 +44,6 @@ Header.propTypes = {
   props: PropTypes.any,
 };
 
-const stateFromProps = ({ userInfo }) => ({ userInfo });
+const stateFromProps = ({ userInfo:{auth,id} }) => ({ auth,id });
 
 export default connect(stateFromProps)(Header);
