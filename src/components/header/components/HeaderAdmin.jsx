@@ -41,7 +41,7 @@ const Template = ({ flagSaveBtn, handleSave, handleCleanAll }) => (
       {linksMap.map(({ path, name }, ind) => (
         <NavItem key={`${ind}-links-nav-bar`}>
           <NavLink href={`${path}`}>
-            {name} {`${flagSaveBtn}`}
+            {name}
           </NavLink>
         </NavItem>
       ))}

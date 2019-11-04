@@ -17,13 +17,10 @@ export const getTypeSelectorData = () => dispatch =>
 
 export const getLocalPlaces = params => dispatch => {
   const res = getLocalPlacesByType(params, ({ results }) => {
-    console.dir(results);
-    let trg = results.map(({ id, name, icon, geometry: { location: { lat, lng } } }) => ({
+let trg = results.map(({ geometry: { location: { lat, lng } }, ...other }) => ({
       lat,
       lng,
-      id,
-      name,
-      icon,
+      ...other
     }));
     return dispatch({
       type: GET_SPECIAL_MARKS,

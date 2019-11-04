@@ -4,6 +4,7 @@ import { NavItem } from 'reactstrap';
 import { IoMdLogOut, IoMdLogIn } from 'react-icons/io';
 import { connect } from 'react-redux';
 import { cleanAllReducer } from './../headerActions';
+import { store } from '../../../utils/localStorage';
 
 const LogButton = ({ logingin, adminFlag, cleanAllReducer }) => {
   const [switched, setSwitched] = useState(false);
@@ -16,10 +17,17 @@ const LogButton = ({ logingin, adminFlag, cleanAllReducer }) => {
   }, [logingin]);
   const relocate = () => {
     setSwitched(!switched);
+    if(switched){
+      store("user",{});
+    }
     if (!adminFlag) {
       cleanAllReducer();
     }
-    history.push(pathname.includes('/login') ? `${adminFlag ? 'admin' : ''}/map` : '/login');
+    history
+        .push(
+            pathname.includes('/login') ? `${adminFlag ? 'admin'
+                : ''}/map` : '/login'
+        );
   };
   return (
     <NavItem onClick={relocate}>

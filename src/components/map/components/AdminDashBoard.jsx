@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getMarks } from './../mapActions';
+import PlaceList from './PlaceList';
 
 const AdminDashBoard = ({ mapInfo }) => {
   const [places, setPlaces] = useState([]);
@@ -19,11 +20,7 @@ const AdminDashBoard = ({ mapInfo }) => {
       >
         Admin DashBoard
       </h3>
-      <ul>
-        {places.map((place, ind) => (
-          <li key={`${ind}654654`}>{JSON.stringify(place)}</li>
-        ))}
-      </ul>
+      <PlaceList places={places}/>
     </>
   );
 };

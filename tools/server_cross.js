@@ -18,7 +18,7 @@ server.get('/get-nearest-places', function(req, res) {
   let url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?${genUrl}`;
   request.get(url, (error, response) => {
     res.send(response.body);
-    return response;
+    return true;
   });
 });
 
